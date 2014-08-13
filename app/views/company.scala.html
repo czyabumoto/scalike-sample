@@ -1,0 +1,14 @@
+@(companyForm:Form[Company], action:play.api.mvc.Call)
+
+@main("会社登録") {
+<h2>会社登録</h2>
+  @helper.form(action = action) {
+    @helper.hidden(companyForm("id"))
+    @helper.inputText(companyForm("name1"), '_help -> "")
+    @helper.inputText(companyForm("name2"), '_help -> "")
+    @helper.inputText(companyForm("email"), '_help -> "")
+    @helper.inputText(companyForm("address1"), '_help -> "")
+    @helper.inputText(companyForm("address2"), '_help -> "")
+    <input type="submit" value="登録" />
+  }
+}

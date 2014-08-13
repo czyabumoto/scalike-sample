@@ -1,0 +1,35 @@
+@(companies:List[Company])
+
+@main("一覧表示") {
+<h2>登録情報表示</h2>
+<a href="/company/add">
+  <input type="button" value="会社追加" />
+</a>
+<a href="/client/add">
+  <input type="button" value="クライアント追加" />
+</a>
+<ul>
+  @for(c <- companies) {
+    <ul>
+      <li>id:@c.id</li>
+      <li>name1:@c.name1</li>
+      <li>name2:@c.name2</li>
+      <li>emai:@c.email</li>
+      <li>address1:@c.address1</li>
+      <li>address2:@c.address2</li>
+      <li>clients...
+        @for(u <- c.clients) {
+          <ul>
+            <li>id:@u.id</li>
+            <li>name:@u.name</li>
+            <li>password:@u.password</li>
+            <li>email:@u.email</li>
+            <li>address1:@u.address1</li>
+            <li>address2:@u.address2
+          </ul>
+        }
+      </li>
+    </ul>
+  }
+</ul>
+}

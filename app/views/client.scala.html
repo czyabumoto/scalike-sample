@@ -1,0 +1,15 @@
+@(clientForm:Form[Client], action:play.api.mvc.Call)
+
+@main("追加") {
+<h2>クライアント登録</h2>
+  @helper.form(action = action) {
+    @helper.hidden(clientForm("id"))
+    @helper.inputText(clientForm("company_id"), '_help -> "")
+    @helper.inputText(clientForm("name"), '_help -> "")
+    @helper.inputText(clientForm("password"), '_help -> "")
+    @helper.inputText(clientForm("email"), '_help -> "")
+    @helper.inputText(clientForm("address1"), '_help -> "")
+    @helper.inputText(clientForm("address2"), '_help -> "")
+    <input type="submit" value="登録" />
+  }
+}
