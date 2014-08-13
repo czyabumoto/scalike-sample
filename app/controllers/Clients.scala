@@ -18,25 +18,25 @@ object Clients extends Controller {
   )(Client.apply)(Client.unapply)
   val clientForm = Form(clientMap)
   
-  def add = Action { implicit request => 
+  def add(company_id:Long) = Action { implicit request => 
     clientForm.bindFromRequest.fold(
-      errors => BadRequest { views.html.client(errors, routes.Clients.add) },
+      errors => BadRequest { views.html.client(errors, routes.Clients.add(company_id)) },
       success => {
         Client.add(clientForm.bindFromRequest.get)
         Redirect(routes.Application.index)
       }
     )
   }
-  def addInput = Action {
+  def addInput(company_id:Long) = Action {
     Ok(views.html.client(
-      clientForm.fill(Client(0, 0, "", "", None, None, None)),
-      routes.Clients.add
+      clientForm.fill(Client(0, company_id, "", "", None, None, None)),
+      routes.Clients.add(company_id)
     ))
   }
   def editInput(id:Long) = Action {
     Client.findBy(id) match {
       case Some(client) => Ok(views.html.client(clientForm.fill(client), routes.Clients.edit(id)))
-      case _ => Redirect(routes.Clients.addInput)
+      case _ => Redirect(routes.Clients.addInput(0))
     }
   }
   def edit(id:Long) = Action { implicit request => 

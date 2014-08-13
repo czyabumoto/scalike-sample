@@ -8,9 +8,9 @@ GET     /company/add                controllers.Companies.addInput
 GET     /company/edit/:id           controllers.Companies.editInput(id:Long)
 POST    /company/add                controllers.Companies.add
 POST    /company/edit/:id           controllers.Companies.edit(id:Long)
-GET     /client/add                 controllers.Clients.addInput
+GET     /client/add                 controllers.Clients.addInput(company_id:Long ?= 0)
 GET     /client/edit/:id            controllers.Clients.editInput(id:Long)
-POST    /client/add                 controllers.Clients.add
+POST    /client/add                 controllers.Clients.add(company_id:Long ?= 0)
 POST    /client/edit/:id            controllers.Clients.edit(id:Long)
 
 

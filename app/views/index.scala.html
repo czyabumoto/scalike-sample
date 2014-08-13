@@ -25,9 +25,24 @@
             <li>password:@u.password</li>
             <li>email:@u.email</li>
             <li>address1:@u.address1</li>
-            <li>address2:@u.address2
+            <li>address2:@u.address2</li>
+            <li>
+              <a href="/client/edit/@u.id">
+                <input type="button" value="編集" />
+              </a>
+              <hr />
+            </li>
           </ul>
         }
+      </li>
+      <li>
+        <a href="/company/edit/@c.id">
+          <input type="button" value="編集" />
+        </a>
+        <a href="/client/add?company_id=@c.id">
+          <input type="button" value="クライアント追加" />
+        </a>
+        <hr />
       </li>
     </ul>
   }

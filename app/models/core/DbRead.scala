@@ -8,7 +8,7 @@ import scala.reflect.macros.Context
  */
 trait DbRead[T] extends SQLSyntaxSupport[T]{
   /** これだけ子クラスでの実装が必要。できればマクロ化したい。。 **/
-  def idVal(instance:T):Long = cls.getField("id").get(instance).asInstanceOf[Long]
+  def idVal(instance:T):Long = cls.getMethod("id").invoke(instance).asInstanceOf[Long]
   // 子クラスで「 = this」オーバーライドしたらおしまい
   def support:SQLSyntaxSupport[T] = companionCls.getField("MODULE$").get(null).asInstanceOf[SQLSyntaxSupport[T]]
   // デフォルトでキャメルケースに変換

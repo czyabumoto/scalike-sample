@@ -3,6 +3,9 @@ package models.core
 import scalikejdbc._
 import scala.reflect.macros.Context
 import scala.collection.mutable._
+import scala.reflect.runtime.{universe => ru}
+import ru._
+import scala.reflect.ClassTag
 
 /**
  * Crudのかったるいボイラーコードを駆逐する
